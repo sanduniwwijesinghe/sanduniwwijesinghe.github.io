@@ -7,7 +7,7 @@
 <meta name="description" content="Sanduni Wijesinghe, Senior Site Reliability Engineer in Sri Lanka: Azure, Kubernetes, Terraform and observability. Projects, writing, CV and contact.">
 <meta name="author" content="Sanduni Wijesinghe">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#1d2bd8">
+<meta name="theme-color" content="#0d0e18">
 <link rel="canonical" href="https://sanduniwijesinghe.com/">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
@@ -36,7 +36,7 @@
  "knowsAbout":["Site Reliability Engineering","Microsoft Azure","Kubernetes","Terraform","Observability","Incident Management"],
  "sameAs":["https://www.linkedin.com/in/sanduniww/","https://github.com/sanduniwwijesinghe","https://medium.com/@sanduniwwijesinghe","https://www.facebook.com/sanduni.wijesinghe.161"]}
 </script>
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(){var r=document.documentElement,t=null;r.classList.add('js');try{t=localStorage.getItem('sw-theme')}catch(e){}r.dataset.theme=(t==='light'||t==='dark')?t:'dark'})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -648,7 +648,7 @@ const sysDark=()=>matchMedia('(prefers-color-scheme: dark)').matches;
 let saved=null;try{saved=localStorage.getItem('sw-theme')}catch(e){}
 const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':sysDark();
 const sync=()=>{const d=isDark();root.classList.toggle('is-dark',d);tgl.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');tgl.title=d?'Light mode':'Dark mode'};
-if(saved==='dark'||saved==='light')root.dataset.theme=saved;
+root.dataset.theme=(saved==='dark'||saved==='light')?saved:'dark';
 sync();
 tgl.addEventListener('click',()=>{const next=isDark()?'light':'dark';root.dataset.theme=next;try{localStorage.setItem('sw-theme',next)}catch(e){}sync()});
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change',sync);
