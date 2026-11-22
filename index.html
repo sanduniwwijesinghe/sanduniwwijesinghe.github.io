@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanduni Wijesinghe – Senior Site Reliability Engineer</title>
+<meta name="description" content="Sanduni Wijesinghe, Senior Site Reliability Engineer in Sri Lanka: Azure, Kubernetes, Terraform and observability. Projects, writing, CV and contact.">
+<meta name="author" content="Sanduni Wijesinghe">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1d2bd8">
+<link rel="canonical" href="https://sanduniwijesinghe.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Sanduni Wijesinghe">
+<meta property="og:title" content="Sanduni Wijesinghe – Senior Site Reliability Engineer">
+<meta property="og:description" content="Senior Site Reliability Engineer. Azure, Kubernetes, observability and incident response. Projects, writing and CV.">
+<meta property="og:url" content="https://sanduniwijesinghe.com/">
+<meta property="og:image" content="https://sanduniwijesinghe.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sanduni Wijesinghe, Senior Site Reliability Engineer">
+<meta property="profile:first_name" content="Sanduni">
+<meta property="profile:last_name" content="Wijesinghe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sanduni Wijesinghe – Senior Site Reliability Engineer">
+<meta name="twitter:description" content="Senior Site Reliability Engineer. Azure, Kubernetes, observability and incident response.">
+<meta name="twitter:image" content="https://sanduniwijesinghe.com/og.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Sanduni Wijesinghe","alternateName":"Sanduni Wasana Wijesinghe",
+ "jobTitle":"Senior Site Reliability Engineer",
+ "url":"https://sanduniwijesinghe.com/","image":"https://sanduniwijesinghe.com/photo.jpg","email":"mailto:sanduniwwijesinghe@gmail.com",
+ "address":{"@type":"PostalAddress","addressRegion":"Western Province","addressCountry":"LK"},
+ "alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Bedfordshire"},{"@type":"CollegeOrUniversity","name":"University of Plymouth"},{"@type":"CollegeOrUniversity","name":"SLIIT"}],
+ "knowsAbout":["Site Reliability Engineering","Microsoft Azure","Kubernetes","Terraform","Observability","Incident Management"],
+ "sameAs":["https://www.linkedin.com/in/sanduniww/","https://github.com/sanduniwwijesinghe","https://medium.com/@sanduniwwijesinghe","https://www.facebook.com/sanduni.wijesinghe.161"]}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, exact, quietly confident — an engineer who keeps things running.
+   IDEA: a service status page — her career reported the way an SRE reports a platform.
+   PICTURE: a live-looking status board: components with 90-segment uptime bars and an "operational" pulse.
+   COLOUR and TYPE: white, ink #14110f, ultramarine #1d2bd8, cool grey; Spectral 500 headings + Inter body.
+   LAYOUT: one reading column with the status board breaking wide; timeline with hanging dates. */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#0d0e18);--ink:light-dark(#14110f,#ecebf2);--mut:light-dark(#5d6170,#9da1b4);
+  --line:light-dark(#e3e5ea,#23263a);--card:light-dark(#f5f6f8,#141626);--acc:light-dark(#1d2bd8,#8a93ff);
+  --ok:light-dark(#1d2bd8,#8a93ff);--okSoft:light-dark(#c9cdf6,#2c3170)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--acc);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:Spectral,Georgia,serif;font-weight:500;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(40px,7vw,64px)}
+h2{font-size:clamp(30px,4vw,42px);margin-bottom:28px}
+h3{font-size:22px;line-height:1.25}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,18px)}
+.band+.band{border-top:1px solid var(--line)}
+p{margin:0 0 1em;max-width:68ch}
+.mut{color:var(--mut)}
+/* nav */
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;padding:0 max(5vw,18px);transition:border-color .3s,box-shadow .3s}
+header.scrolled{border-bottom-color:var(--line);box-shadow:0 8px 24px -20px rgba(0,0,0,.35)}
+nav{display:flex;align-items:center;gap:8px 22px;max-width:1180px;margin:0 auto;padding:10px 0}
+.brand{font-family:Spectral,serif;font-size:21px;color:var(--ink);text-decoration:none;margin-right:auto;white-space:nowrap}
+nav .links{display:flex;gap:4px 20px}
+nav .links a{flex:none;position:relative;color:var(--mut);text-decoration:none;font-size:15px;padding:12px 0;white-space:nowrap;transition:color .2s}
+nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:var(--acc);transform:scaleX(0);transition:transform .3s}
+nav .links a:hover,nav .links a.on{color:var(--ink)}
+nav .links a.on::after{transform:scaleX(1)}
+/* reveal on scroll (only when JS is running) */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+/* hero entrance */
+.js .hero>div:first-of-type>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.js .hero>div:first-of-type>*:nth-child(2){animation-delay:.08s}
+.js .hero>div:first-of-type>*:nth-child(3){animation-delay:.16s}
+.js .hero>div:first-of-type>*:nth-child(4){animation-delay:.24s}
+.js .hero>div:first-of-type>*:nth-child(5){animation-delay:.32s}
+.js .hero>div:first-of-type>*:nth-child(6){animation-delay:.4s}
+.js .hero>div:first-of-type>.avatar{animation:pop .9s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:none}}
+/* photo */
+.avatar{position:relative;width:clamp(116px,13vw,148px);aspect-ratio:1;margin-bottom:24px}
+.avatar img{position:absolute;inset:7px;width:calc(100% - 14px);height:calc(100% - 14px);border-radius:50%;object-fit:cover;object-position:50% 30%;border:3px solid var(--bg);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.avatar:hover img{transform:scale(1.04)}
+.ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),color-mix(in srgb,var(--acc) 15%,transparent) 40%,var(--acc) 70%,var(--water),var(--acc));animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.oncall{position:absolute;right:9%;bottom:9%;width:20px;height:20px;border-radius:50%;background:#22b573;border:3px solid var(--bg);z-index:1}
+.oncall::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #22b573;opacity:0;animation:pulse 2.4s ease-out infinite}
+/* hero socials + icon in button */
+.btn .ic{width:19px;height:19px;margin-right:8px;flex:none}
+.socials{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.socials a{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);color:var(--mut);background:var(--bg);transition:transform .25s cubic-bezier(.2,.7,.2,1),color .2s,border-color .2s,background-color .2s}
+.socials a:hover{transform:translateY(-3px) rotate(-6deg);color:light-dark(#fff,#0d0e18);background:var(--acc);border-color:var(--acc)}
+.socials svg{width:19px;height:19px;fill:currentColor}
+@media(prefers-reduced-motion:reduce){.ring,.oncall::after,.js .hero .avatar{animation:none}}
+.js .board{animation:rise .9s .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* status bars grow in, left to right */
+.js .bars i{transform:scaleY(0);transform-origin:bottom;animation:grow .5s cubic-bezier(.3,.8,.3,1) forwards;animation-delay:calc(.45s + var(--i) * 12ms)}
+@keyframes grow{to{transform:scaleY(1)}}
+.bars i{transition:opacity .15s}
+.bars:hover i{opacity:.55}.bars i:hover{opacity:1}
+.tgl{flex:none;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:border-color .2s}
+.tgl:hover{border-color:var(--acc)}
+.tgl svg{width:20px;height:20px;fill:currentColor;stroke:currentColor;grid-area:1/1;transition:opacity .25s,transform .35s}
+.tgl .moon{stroke:none}
+.tgl .sun{opacity:0;transform:rotate(-60deg) scale(.6)}
+:root.is-dark .tgl .moon{opacity:0;transform:rotate(60deg) scale(.6)}
+:root.is-dark .tgl .sun{opacity:1;transform:none}
+body,header,.board,.sk,.pj{transition:background-color .3s,color .3s,border-color .3s}
+@media(prefers-reduced-motion:reduce){.tgl svg,body,header,.board,.sk,.pj{transition:none}}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,5vw,64px);align-items:center}
+.role{font-size:19px;color:var(--mut);margin:18px 0 26px;max-width:34ch}
+.role b{color:var(--ink);font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:500;text-decoration:none;border:1px solid var(--acc)}
+.btn.pri{background:var(--acc);color:light-dark(#fff,#0d0e18)}
+.btn.sec{color:var(--acc)}
+.loc{margin-top:22px;font-size:15px;color:var(--mut)}
+/* status board */
+.board{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,2.6vw,28px);box-shadow:0 1px 0 var(--line),0 24px 48px -28px light-dark(rgba(29,43,216,.35),rgba(0,0,0,.6))}
+.bhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.state{display:flex;align-items:center;gap:10px;font-weight:600}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--ok);position:relative;flex:none}
+.dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--ok);opacity:0;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.5);opacity:0}}
+@media(prefers-reduced-motion:reduce){.dot::after{animation:none}html{scroll-behavior:auto}
+  .js .rv,.js .hero>div:first-child>*,.js .board,.js .bars i{opacity:1;transform:none;animation:none;transition:none}}
+.since{font-size:14px;color:var(--mut)}
+.comp{padding:14px 0;border-bottom:1px solid var(--line)}
+.comp:last-child{border-bottom:0;padding-bottom:2px}
+.crow{display:flex;justify-content:space-between;gap:12px;font-size:15px;margin-bottom:8px}
+.crow span:last-child{color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
+.bars{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:2px;height:30px}
+.bars i{background:var(--ok);border-radius:2px;opacity:.88}
+.bars i.s{background:var(--okSoft)}
+.bfoot{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-top:6px}
+/* about */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(24px,5vw,72px)}
+.facts{display:grid;gap:18px;align-content:start}
+.fact b{display:block;font-family:Spectral,serif;font-weight:500;font-size:34px;line-height:1.1;color:var(--acc)}
+.fact span{color:var(--mut);font-size:15px}
+/* timeline */
+.tl{display:grid;gap:0}
+.job{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 40px;padding:28px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0;padding-top:0}
+.when{font-size:15px;color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap}
+.when b{display:block;color:var(--ink);font-weight:500}
+.org{color:var(--mut);margin:6px 0 14px}
+ul.pts{margin:0;padding-left:1.1em;max-width:70ch}
+ul.pts li{margin-bottom:8px}
+ul.pts li::marker{color:var(--acc)}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.sk{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:var(--bg)}
+.sk h3{font-size:19px;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:14px;padding:5px 11px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+/* education + certs */
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px 48px}
+.ed{padding-top:16px;border-top:2px solid var(--ink)}
+.ed .meta{color:var(--mut);font-size:15px;margin:6px 0 10px}
+.ed p{font-size:15.5px}
+.certs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0 56px}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.certs li span:last-child{color:var(--mut);white-space:nowrap;font-size:15px;font-variant-numeric:tabular-nums}
+.certs small{display:block;color:var(--mut);font-size:14px}
+/* projects */
+.projs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pj{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;padding:clamp(20px,2.4vw,30px);background:var(--bg);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
+.pj:hover{transform:translateY(-4px);border-color:var(--acc);box-shadow:0 22px 40px -28px light-dark(rgba(29,43,216,.5),rgba(0,0,0,.8))}
+.pj.big{border-top:4px solid var(--acc)}
+.pj.big h3{font-size:26px}
+.sk{transition:transform .3s,border-color .3s}.sk:hover{transform:translateY(-3px);border-color:var(--acc)}
+.btn{transition:transform .2s,background-color .2s,color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec:hover{background:var(--acc);color:light-dark(#fff,#0d0e18)}
+.btn.pri:hover{box-shadow:0 10px 22px -12px var(--acc)}
+.ser li a span:first-child{transition:color .2s,transform .2s}
+.ser li a:hover span:first-child{transform:translateX(4px)}
+@media(hover:none){.pj:hover,.sk:hover,.btn:hover{transform:none}}
+/* illustrations */
+:root{--alert:light-dark(#e0453a,#ff8a7e);--water:light-dark(#3aa0e6,#62b8f5)}
+.art{display:block;width:100%;height:auto;aspect-ratio:320/140;margin:0 0 18px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--acc);overflow:hidden}
+.art text{font:600 10px Inter,system-ui,sans-serif;fill:var(--mut)}
+.art .nd{fill:var(--bg);stroke:var(--mut);stroke-width:1.5}
+.art .nd.hot{stroke:var(--alert);stroke-width:2}
+.art .ed{stroke:var(--mut);stroke-width:1.5;fill:none;opacity:.6}
+.art .cyc{stroke:var(--alert);stroke-width:2.2;fill:none;stroke-dasharray:6 5;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-22}}
+.art .lock{transform-box:fill-box;transform-origin:center;animation:beat 1.6s ease-in-out infinite;color:var(--alert)}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.art .px{fill:var(--line)}
+.art .river{stroke:var(--water);stroke-width:7;fill:none;stroke-linecap:round}
+.art .flood{fill:var(--alert);opacity:.3;transform-box:fill-box;transform-origin:center;animation:spread 4.5s ease-in-out infinite}
+@keyframes spread{0%,100%{transform:scale(.35);opacity:.12}55%{transform:scale(1);opacity:.4}}
+.art .sat{animation:orbit 6s linear infinite}
+@keyframes orbit{from{transform:translateX(-60px)}to{transform:translateX(380px)}}
+.art .beam{fill:var(--acc);opacity:.12}
+.art .box{fill:var(--bg);stroke:var(--acc);stroke-width:1.5}
+.art .wire{stroke:var(--mut);stroke-width:1.3;fill:none;opacity:.55;stroke-dasharray:3 4}
+.art .pkt{fill:var(--acc)}
+.art .bar{fill:var(--acc);transform-box:fill-box;transform-origin:bottom;animation:barup 3.2s ease-in-out infinite}
+@keyframes barup{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.art .ring{fill:none;stroke-width:9;transform:rotate(-90deg);transform-box:fill-box;transform-origin:center}
+.art .tw{animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.art .neu{fill:var(--acc);animation:tw 1.8s ease-in-out infinite}
+.art .climb{stroke:var(--acc);stroke-width:2.5;fill:none;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 3.5s ease-in-out infinite}
+@keyframes draw{0%{stroke-dashoffset:260}60%,100%{stroke-dashoffset:0}}
+.ser li a span:last-child,.certs li span:last-child,.crow span:last-child{flex:none}
+.ser .art{aspect-ratio:320/110;margin-bottom:16px}
+/* experience rail */
+.tl{position:relative}
+.tl::before,.tl .prog{content:"";position:absolute;left:219px;top:6px;bottom:0;width:2px;border-radius:2px;background:var(--line)}
+.tl .prog{background:var(--acc);transform-origin:top;transform:scaleY(var(--p,0));transition:transform .15s linear}
+.job{position:relative}
+.job::before{content:"";position:absolute;left:214px;top:36px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--acc);z-index:1;transition:background .3s,box-shadow .3s}
+.job:first-of-type::before{top:6px}
+.job.lit::before{background:var(--acc);box-shadow:0 0 0 5px color-mix(in srgb,var(--acc) 20%,transparent)}
+.job{grid-template-columns:200px minmax(0,1fr)!important;column-gap:56px!important}
+@media(max-width:900px){.tl::before,.tl .prog,.job::before{display:none}.job{grid-template-columns:minmax(0,1fr)!important}}
+/* hero glow */
+.hero{position:relative}
+.glow{position:absolute;z-index:-1;width:520px;height:520px;right:-80px;top:50%;margin-top:-260px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 22%,transparent),transparent);filter:blur(10px);animation:drift 14s ease-in-out infinite alternate;pointer-events:none}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,40px) scale(1.15)}}
+.band:first-child{position:relative;isolation:isolate;overflow:clip}
+.bars i.new{animation:grow .5s cubic-bezier(.3,.8,.3,1) forwards!important;transform:scaleY(0)}
+.tags span{transition:transform .2s,background-color .2s,color .2s}
+.tags span:hover{transform:translateY(-2px);background:var(--acc);color:light-dark(#fff,#0d0e18)}
+@media(prefers-reduced-motion:reduce){.art *,.glow{animation:none!important}.flood{transform:none;opacity:.35}.sat{transform:translateX(150px)}.climb{stroke-dashoffset:0}.tl .prog{transition:none}}
+.pj .k{font-size:14px;color:var(--mut);margin-bottom:6px}
+.pj h3{margin-bottom:10px}
+.pj p{font-size:15.5px;margin-bottom:14px}
+.pj ul{margin:0 0 16px;padding-left:1.1em;font-size:15px}
+.pj ul li{margin-bottom:5px}.pj ul li::marker{color:var(--acc)}
+.pj .tags{margin-top:auto;margin-bottom:16px}
+.pj a.repo{font-weight:500}
+/* writing series */
+.series{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 56px}
+@media(max-width:760px){.series{grid-template-columns:minmax(0,1fr)}}
+.art .sway{transform-box:fill-box;transform-origin:50% 100%;transform:rotate(var(--r));animation:sway 5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(var(--r))}50%{transform:rotate(calc(var(--r) * -.4)) translateY(-3px)}}
+.art .heart{transform-box:fill-box;transform-origin:center;animation:beat 1.4s ease-in-out infinite}
+.contact .btn{gap:8px}
+.contact .btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+.mail{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:16px}
+.mail code{font:500 16px Inter,system-ui,sans-serif;background:rgba(255,255,255,.14);padding:8px 12px;border-radius:8px}
+.copy{min-height:40px;padding:0 14px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;font:500 14px Inter,system-ui,sans-serif;cursor:pointer}
+.copy:hover{background:rgba(255,255,255,.14)}
+.ser h3{margin-bottom:6px}
+.ser>p{color:var(--mut);font-size:15.5px}
+.ser ol{list-style:none;margin:14px 0 0;padding:0}
+.ser li{border-top:1px solid var(--line)}
+.ser li a{display:flex;justify-content:space-between;gap:14px;padding:12px 0;color:var(--ink);text-decoration:none}
+.ser li a:hover span:first-child{color:var(--acc)}
+.ser li a span:last-child{color:var(--mut);font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* writing + contact */
+.post{display:block;border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-decoration:none;color:var(--ink);max-width:720px}
+.post:hover{border-color:var(--acc)}
+.post h3{margin:4px 0 8px}
+.contact{background:var(--acc);color:light-dark(#fff,#0d0e18)}
+.contact h2{color:inherit}
+.contact p{opacity:.9}
+.contact a.btn{background:light-dark(#fff,#0d0e18);color:var(--acc);border-color:transparent}
+footer{padding:22px max(5vw,18px);font-size:14px;color:var(--mut)}
+@media(max-width:900px){.hero,.two{grid-template-columns:minmax(0,1fr)}.job{grid-template-columns:minmax(0,1fr)}.facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){nav{flex-wrap:wrap}nav .links{order:3;flex-basis:100%;overflow-x:auto;scrollbar-width:none;gap:4px 22px;margin:0 calc(-1 * max(5vw,18px));padding:0 max(5vw,18px);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 28px),transparent)}nav .links::-webkit-scrollbar{display:none}nav .links a{padding:10px 0 12px}nav{padding-bottom:0}}
+@media(max-width:760px){.projs{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.facts{grid-template-columns:minmax(0,1fr)}.fact b{font-size:28px}.bars{height:24px;gap:1.5px}.btn{padding:0 18px}.crow{font-size:14px}}
+html{overflow-x:clip}
+</style>
+</head>
+<body>
+<header>
+  <nav aria-label="Main">
+    <a class="brand" href="#top">Sanduni Wijesinghe</a>
+    <div class="links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#writing">Writing</a><a href="#contact">Contact</a>
+    </div>
+    <button class="tgl" id="tgl" type="button" aria-label="Switch to dark mode" title="Dark mode">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-width="2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="band">
+    <div class="wrap hero">
+      <span class="glow" aria-hidden="true"></span>
+      <div>
+        <div class="avatar"><span class="ring" aria-hidden="true"></span><img src="photo.jpg" alt="Sanduni Wijesinghe" width="560" height="560"><span class="oncall" aria-hidden="true"></span></div>
+        <h1>Sanduni Wijesinghe</h1>
+        <p class="role"><b>Senior Site Reliability Engineer.</b> I keep large-scale cloud platforms on Azure and Kubernetes fast, observable and available for customers around the world.</p>
+        <div class="cta">
+          <a class="btn pri" href="Sanduni-Wijesinghe-CV.pdf" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0-4.5-4.5M12 14l4.5-4.5M4.5 17.5v2h15v-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download CV</a>
+          <a class="btn sec" href="#projects">See my work</a>
+        </div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/sanduniww/" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg></a>
+          <a href="https://github.com/sanduniwwijesinghe" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.9.83.1-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="https://medium.com/@sanduniwwijesinghe" aria-label="Medium" title="Medium"><svg viewBox="0 0 24 24"><ellipse cx="6.5" cy="12" rx="5.5" ry="5.8"/><ellipse cx="15.3" cy="12" rx="2.8" ry="5.4"/><ellipse cx="20.6" cy="12" rx="1.1" ry="4.9"/></svg></a>
+          <a href="https://www.facebook.com/sanduni.wijesinghe.161" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.45A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.98v2.22H7.8v3h2.6V21z"/></svg></a>
+          <a href="#contact" aria-label="Email" title="Email"><svg viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5zm2 .9v.3l7 4.6 7-4.6v-.3z"/></svg></a>
+        </div>
+        <p class="loc">Based in Gampaha, Sri Lanka</p>
+      </div>
+
+      <div class="board" aria-label="Career status board">
+        <div class="bhead">
+          <div class="state"><span class="dot" aria-hidden="true"></span>All systems operational</div>
+          <div class="since">In production since 2021</div>
+        </div>
+        <div id="comps"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="wrap two">
+      <div>
+        <h2>About</h2>
+        <div class="facts">
+          <div class="fact"><b data-to="5" data-suf="+ years">5+ years</b><span>in site reliability engineering</span></div>
+          <div class="fact"><b data-to="99.9" data-dec="1" data-suf="%+">99.9%+</b><span>availability sustained for production services</span></div>
+          <div class="fact"><b>MBA</b><span>with Commendation, University of Bedfordshire</span></div>
+        </div>
+      </div>
+      <div>
+        <p>I'm a Senior Site Reliability Engineer who works where cloud infrastructure meets the customer. I operate large-scale production environments on Azure and AKS for customers around the world, and I'm a senior escalation point when something goes wrong.</p>
+        <p>My work runs from the first alert to the last corrective action. I troubleshoot Kubernetes workloads layer by layer, run blameless post-incident reviews, and turn what we learn into better monitoring, runbooks and automation, so the same problem doesn't come back.</p>
+        <p>Alongside the engineering I completed an MBA. My research looked at how company policy and culture can help keep women in shift-based technical roles in IT. I care about reliable systems and about building teams where people can do their best work over the long run. I'm currently studying for an MSc in Enterprise Applications Development at SLIIT.</p>
+        <p>Outside work I build tools that come out of real on-call problems, and I write. On Medium I write about being a woman in 24/7 SRE work and explain AI for beginners.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <div class="tl" id="jobs"></div>
+    </div>
+  </section>
+
+  <section class="band" id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projs" id="projs"></div>
+      <p style="margin-top:26px"><a href="https://github.com/sanduniwwijesinghe">See everything on GitHub →</a></p>
+    </div>
+  </section>
+
+  <section class="band" id="skills" style="background:var(--card)">
+    <div class="wrap">
+      <h2>Skills and tools</h2>
+      <div class="skills" id="skillgrid"></div>
+    </div>
+  </section>
+
+  <section class="band" id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="edu" id="edu"></div>
+      <h2 style="margin-top:64px">Certifications</h2>
+      <ul class="certs" id="certs"></ul>
+    </div>
+  </section>
+
+  <section class="band" id="writing">
+    <div class="wrap">
+      <h2>Writing</h2>
+      <div class="series" id="series"></div>
+      <p style="margin-top:26px"><a href="https://medium.com/@sanduniwwijesinghe">Read more of my writing on Medium →</a></p>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk</h2>
+      <p>I'm always glad to talk about reliability engineering, cloud operations, writing or women in tech. Email me, or find me on any of these.</p>
+      <p style="margin-top:6px"><a href="Sanduni-Wijesinghe-CV.pdf" target="_blank" rel="noopener" style="color:inherit;font-weight:600">Download my CV (PDF) →</a></p>
+      <div class="mail">
+        <code id="em">sanduniwwijesinghe@gmail.com</code>
+        <a class="btn" href="mailto:sanduniwwijesinghe@gmail.com" style="min-height:40px">Send an email</a>
+        <button class="copy" id="cpy" type="button">Copy address</button>
+      </div>
+      <div class="cta" style="margin-top:22px">
+        <a class="btn" href="https://www.linkedin.com/in/sanduniww/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://github.com/sanduniwwijesinghe"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.9.83.1-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+        <a class="btn" href="https://medium.com/@sanduniwwijesinghe"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="6.5" cy="12" rx="5.5" ry="5.8"/><ellipse cx="15.3" cy="12" rx="2.8" ry="5.4"/><ellipse cx="20.6" cy="12" rx="1.1" ry="4.9"/></svg>Medium</a>
+        <a class="btn" href="https://www.facebook.com/sanduni.wijesinghe.161"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.45A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.98v2.22H7.8v3h2.6V21z"/></svg>Facebook</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Sanduni Wijesinghe · sanduniwijesinghe.com</div></footer>
+
+<script>
+{
+const comps=[
+  ["Cloud platforms · Azure · AKS","Senior SRE"],
+  ["Incident response · RCA","P1/P2 escalation"],
+  ["Observability","Prometheus · Grafana · ELK"],
+  ["Automation · IaC","Python · Bash · Terraform"]
+];
+const N=60;
+const bars=k=>Array.from({length:N},(_,i)=>`<i style="--i:${i+k*4}"${((i*7+k*13)%29===0)?' class="s"':''}></i>`).join('');
+document.getElementById('comps').innerHTML=comps.map((c,k)=>`
+  <div class="comp"><div class="crow"><span>${c[0]}</span><span>${c[1]}</span></div>
+  <div class="bars" style="--n:${N}" aria-hidden="true">${bars(k)}</div></div>`).join('')+
+  `<div class="bfoot"><span>2021</span><span>Today</span></div>`;
+
+const jobs=[
+  {t:"Senior Site Reliability Engineer",w:"Jun 2025 – Present",o:"IFS · Sri Lanka",p:[
+    "Operate large-scale IFS Cloud production environments on Azure and AKS for customers worldwide, helping keep service availability at 99.9% or higher.",
+    "Act as a senior escalation point for Priority 1 and 2 incidents: lead complex troubleshooting, restore service and run root cause analysis.",
+    "Run blameless post-incident reviews and track corrective actions through problem management so incidents don't recur.",
+    "Troubleshoot production Kubernetes workloads across the application, platform and infrastructure layers, tuning pod resources and node pool capacity for stability.",
+    "Improve monitoring and alerting with Prometheus, Grafana, ELK and Azure Monitor: define service health indicators against customer SLAs and cut alert noise for on-call engineers.",
+    "Deliver controlled changes with Terraform, GitLab CI and Azure DevOps pipelines, and support DR tests, backup and restore checks, and failover exercises.",
+    "Automate routine checks, diagnostics and recovery steps with Python, Bash and PowerShell. Mentor junior engineers and maintain runbooks."]},
+  {t:"Site Reliability Engineer",w:"May 2023 – May 2025",o:"IFS · Colombo",p:[
+    "Handled customer production incidents across Azure-hosted and containerised workloads, from investigation through resolution and verification.",
+    "Troubleshot Kubernetes, Docker, Oracle 19c and Linux performance and reliability issues as part of a 24×7 on-call rotation, working to SLA, OLA and KPI targets.",
+    "Built Grafana dashboards, ELK queries and Bash and Python diagnostic scripts to speed up triage and root cause identification.",
+    "Performed RCA, validated fixes in pre-production and maintained SOPs and knowledge-base articles."]},
+  {t:"Associate Site Reliability Engineer",w:"Jul 2021 – Apr 2023",o:"IFS · Hybrid",p:[
+    "Investigated Azure production incidents using log analysis and system diagnostics, and supported changes and operational documentation.",
+    "Handled Linux and Windows maintenance, patching and security updates, and automated patch-status and server health reports with PowerShell and Bash."]}
+];
+document.getElementById('jobs').innerHTML=jobs.map(j=>`
+  <article class="job"><div class="when"><b>${j.w.split(' – ')[0]}</b>to ${j.w.split(' – ')[1]}</div>
+  <div><h3>${j.t}</h3><div class="org">${j.o}</div><ul class="pts">${j.p.map(x=>`<li>${x}</li>`).join('')}</ul></div></article>`).join('');
+
+const skills=[
+  ["Cloud and platforms",["Microsoft Azure","AKS / Kubernetes","Docker","Linux","Windows Server","IFS Cloud"]],
+  ["Observability",["Prometheus","Grafana","ELK Stack","Elasticsearch","Azure Monitor","Network monitoring"]],
+  ["Automation and delivery",["Terraform","Helm","Argo Workflows","Python","Go","Bash","PowerShell","GitLab CI","GitHub Actions","Azure DevOps"]],
+  ["Reliability practice",["Incident management","Root cause analysis","Problem management","SLAs and alerting","DR and failover","Runbooks and SOPs"]],
+  ["Data and networking",["Oracle 19c","MongoDB","Nginx","HAProxy","Load balancing","Computer networking"]],
+  ["Leadership",["Mentoring","Technical consultation","Business administration","Policy research","Written communication"]]
+];
+document.getElementById('skillgrid').innerHTML=skills.map(s=>`
+  <div class="sk"><h3>${s[0]}</h3><div class="tags">${s[1].map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
+
+const edu=[
+  ["MSc in IT, Enterprise Applications Development","SLIIT · 2024 – present",""],
+  ["Master of Business Administration","University of Bedfordshire · 2024 – 2025 · Commendation","Focused on bringing technology and organisational leadership together. My research looked at company policies and cultural changes that help keep women in shift-based technical roles in IT."],
+  ["BSc in Computer Networks","University of Plymouth · 2018 – 2022 · Second Class (Upper)","Final-year project: an agent-less monitoring system that collects real-time performance data from cloud-hosted infrastructure without installing local agents."],
+  ["CCNA, Computer Networks","Cisco Networking Academy · 2021 – 2022",""],
+  ["Japanese Language N5–N4","Sasakawa Education Center · 2017 – 2018 · Distinction",""]
+];
+document.getElementById('edu').innerHTML=edu.map(e=>`
+  <div class="ed"><h3>${e[0]}</h3><div class="meta">${e[1]}</div>${e[2]?`<p>${e[2]}</p>`:''}</div>`).join('');
+
+const certs=[
+  ["IFS Certified Practitioner – Lifecycle Experience (IFS Cloud) 2026","IFS","Aug 2026"],
+  ["IFS Learning Achievement – Site Reliability Engineer","IFS","Jul 2026"],
+  ["IFS Certified Practitioner – Administration (IFS Cloud) 2026","IFS","May 2026"],
+  ["IFS Certified Practitioner – Deployment (IFS Cloud) 2026","IFS","Apr 2026"],
+  ["IFS Certified Practitioner – Lobbies (IFS Cloud) 2026","IFS","Feb 2026"],
+  ["IFS Learning Achievement – IFS.ai Fundamentals","IFS","Dec 2025"],
+  ["Getting Started with Go","University of California, Irvine","Nov 2025"],
+  ["Introduction to AWS for Cloud Beginners","Simplilearn","Nov 2025"],
+  ["IFS Learning Achievement – Cloud Build Place for Technicians","IFS","Feb 2024"],
+  ["Microsoft Certified: Azure Administrator Associate","Microsoft","Jan 2023"]
+];
+document.getElementById('certs').innerHTML=certs.map(c=>`
+  <li><span>${c[0]}<small>${c[1]}</small></span><span>${c[2]}</span></li>`).join('');
+
+const lockIcon='<g class="lock"><rect x="-7" y="-3" width="14" height="11" rx="2" fill="currentColor"/><path d="M-4.5 -3v-3a4.5 4.5 0 0 1 9 0v3" stroke="currentColor" stroke-width="2" fill="none"/></g>';
+const ART={
+JVM:`<svg class="art" viewBox="0 0 320 140" role="img" aria-label="Thread wait-for graph with a highlighted deadlock cycle">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>
+  <line class="ed" x1="68" y1="40" x2="139" y2="40" marker-end="url(#ah)"/><line class="ed" x1="66" y1="96" x2="142" y2="51" marker-end="url(#ah)"/>
+  <path class="cyc" d="M177 45L246 64" marker-end="url(#ah)"/><path class="cyc" d="M247 77L180 99" marker-end="url(#ah)"/><path class="cyc" d="M160 87L160 61" marker-end="url(#ah)"/>
+  <circle class="nd" cx="50" cy="40" r="17"/><circle class="nd" cx="50" cy="105" r="17"/>
+  <circle class="nd hot" cx="160" cy="40" r="18"/><circle class="nd hot" cx="265" cy="70" r="18"/><circle class="nd hot" cx="160" cy="105" r="18"/>
+  <text x="50" y="44" text-anchor="middle">T1</text><text x="50" y="109" text-anchor="middle">T5</text><text x="160" y="44" text-anchor="middle">T2</text><text x="265" y="74" text-anchor="middle">T3</text><text x="160" y="109" text-anchor="middle">T4</text>
+  <g transform="translate(200 72)">${lockIcon}</g>
+  <text x="300" y="128" text-anchor="end" style="fill:var(--alert)">DEADLOCK · CRITICAL</text></svg>`,
+"geo-flood-monitor":`<svg class="art" viewBox="0 0 320 140" role="img" aria-label="Satellite passing over a river with flood water spreading">
+  <defs><pattern id="pxp" width="10" height="10" patternUnits="userSpaceOnUse"><rect class="px" x="1" y="1" width="8" height="8" rx="1.5"/></pattern></defs>
+  <rect x="0" y="30" width="320" height="110" fill="url(#pxp)" opacity=".7"/>
+  <ellipse class="flood" cx="160" cy="92" rx="85" ry="28"/>
+  <path class="river" d="M-5 102C55 82 95 116 160 94S255 66 325 84"/>
+  <g class="sat"><polygon class="beam" points="0,22 -26,140 26,140"/><rect x="-6" y="12" width="12" height="10" rx="2" fill="currentColor"/><rect x="-22" y="14" width="13" height="6" fill="currentColor" opacity=".6"/><rect x="9" y="14" width="13" height="6" fill="currentColor" opacity=".6"/></g>
+  <text x="12" y="20">SENTINEL-2</text><text x="308" y="20" text-anchor="end" style="fill:var(--alert)">NEW WATER</text></svg>`,
+"skillbridge-cloud":`<svg class="art" viewBox="0 0 320 140" role="img" aria-label="Requests flowing from a gateway to three microservices">
+  <rect x="8" y="8" width="304" height="124" rx="12" fill="none" stroke="var(--line)" stroke-dasharray="4 4"/>
+  <text x="20" y="26">AWS · KUBERNETES</text>
+  <path id="w1" class="wire" d="M100 78C160 78 160 42 214 42"/><path id="w2" class="wire" d="M100 78L214 78"/><path id="w3" class="wire" d="M100 78C160 78 160 114 214 114"/>
+  <rect class="box" x="26" y="62" width="74" height="32" rx="8"/><text x="63" y="82" text-anchor="middle" style="fill:var(--ink)">nginx</text>
+  <rect class="box" x="214" y="28" width="82" height="28" rx="8"/><rect class="box" x="214" y="64" width="82" height="28" rx="8"/><rect class="box" x="214" y="100" width="82" height="28" rx="8"/>
+  <text x="255" y="46" text-anchor="middle">service</text><text x="255" y="82" text-anchor="middle">service</text><text x="255" y="118" text-anchor="middle">service</text>
+  <circle class="pkt" r="4"><animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#w1"/></animateMotion></circle>
+  <circle class="pkt" r="4"><animateMotion dur="1.8s" begin=".6s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
+  <circle class="pkt" r="4"><animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite"><mpath href="#w3"/></animateMotion></circle></svg>`,
+MoneyManager:`<svg class="art" viewBox="0 0 320 140" role="img" aria-label="Phone showing a spending chart">
+  <rect x="118" y="10" width="84" height="140" rx="14" fill="var(--bg)" stroke="var(--mut)" stroke-width="1.5"/>
+  <rect x="148" y="16" width="24" height="4" rx="2" fill="var(--line)"/>
+  <circle cx="160" cy="52" r="20" class="ring" stroke="var(--line)"/>
+  <circle cx="160" cy="52" r="20" class="ring" stroke="var(--acc)" stroke-dasharray="70 126"/>
+  <circle cx="160" cy="52" r="20" class="ring" stroke="var(--water)" stroke-dasharray="34 126" stroke-dashoffset="-72"/>
+  <rect class="bar" x="134" y="88" width="9" height="34" rx="2"/><rect class="bar" x="149" y="88" width="9" height="34" rx="2" style="animation-delay:.3s"/><rect class="bar" x="164" y="88" width="9" height="34" rx="2" style="animation-delay:.6s"/><rect class="bar" x="179" y="88" width="9" height="34" rx="2" style="animation-delay:.9s"/>
+  <g class="tw"><circle cx="62" cy="56" r="14" fill="none" stroke="var(--acc)" stroke-width="2"/><text x="62" y="60" text-anchor="middle" style="fill:var(--acc);font-size:12px">Rs</text></g>
+  <g class="tw" style="animation-delay:1.2s"><circle cx="256" cy="86" r="14" fill="none" stroke="var(--water)" stroke-width="2"/><text x="256" y="90" text-anchor="middle" style="fill:var(--water);font-size:12px">+</text></g></svg>`
+};
+const projs=[
+  {k:"Python CLI · Incident tooling",t:"JVM Diagnostics Copilot",big:1,r:"JVM",
+   d:"A local, read-only tool that turns JVM thread dumps and heap histograms from a production incident into structured RCA evidence. It was built from on-call experience: during a P1, finding who holds a lock in a 5,000-line jstack shouldn't take this long.",
+   p:["Detects deadlock cycles on the thread wait-for graph, lock contention with the holding thread, CPU-bound hotspots and thread-pool saturation","Reads Eclipse MAT and jmap histograms for memory-pressure signals","Writes a compact, evidence-only prompt for Copilot or any LLM, so no raw dump ever leaves the laptop"],
+   s:["Python","JVM","RCA","LLM-assisted"]},
+  {k:"Cloud-native data pipeline · Azure",t:"Geo Flood Monitor",big:1,r:"geo-flood-monitor",
+   d:"Maps new flood water in Sri Lanka's western river basins (Kelani Ganga, Attanagalu Oya, Kalu Ganga) from free Sentinel-2 satellite imagery, within hours of a satellite pass. It runs on AKS and is operated against explicit SLOs.",
+   p:["NDWI water index and change detection against a dry-season baseline, published as Cloud-Optimized GeoTIFF map tiles","Terraform for AKS with a spot node pool that scales to zero, Workload Identity and no storage keys in the cluster","SLOs for freshness, tile latency and availability, with multi-window burn-rate alerts and runbooks","CI with lint, tests, Checkov, kubeconform and Trivy scans"],
+   s:["AKS","Terraform","Helm","Argo","Prometheus","PostGIS"]},
+  {k:"Microservices · AWS",t:"SkillBridge Cloud",r:"skillbridge-cloud",
+   d:"The SkillBridge platform split into microservices behind an Nginx gateway and deployed on Kubernetes on AWS.",
+   p:[],s:["AWS","Kubernetes","Nginx","Microservices"]},
+  {k:"Mobile app",t:"Money Manager",r:"MoneyManager",
+   d:"A personal finance app for tracking income and expenses, with chart-based spending insights, offline entry and reminders when your balance runs low.",
+   p:[],s:["React Native","Expo","Firebase","Firestore"]}
+];
+document.getElementById('projs').innerHTML=projs.map(p=>`
+  <article class="pj${p.big?' big':''}">${ART[p.r]||''}<div class="k">${p.k}</div><h3>${p.t}</h3><p>${p.d}</p>
+  ${p.p.length?`<ul>${p.p.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  <div class="tags">${p.s.map(x=>`<span>${x}</span>`).join('')}</div>
+  <a class="repo" href="https://github.com/sanduniwwijesinghe/${p.r}">View on GitHub →</a></article>`).join('');
+
+const M="https://medium.com/@sanduniwwijesinghe/";
+const series=[
+  {art:`<svg class="art" viewBox="0 0 320 110" role="img" aria-label="Night sky over a laptop">
+    <path d="M70 20a26 26 0 1 0 26 34a20 20 0 0 1-26-34z" fill="currentColor"/>
+    ${[[140,22,0],[200,40,.6],[255,18,1.2],[290,55,.3],[170,60,1.6],[230,74,.9],[120,70,2]].map(s=>`<circle class="tw" cx="${s[0]}" cy="${s[1]}" r="2.2" fill="currentColor" style="animation-delay:${s[2]}s"/>`).join('')}
+    <rect x="186" y="70" width="70" height="30" rx="4" fill="var(--bg)" stroke="var(--mut)" stroke-width="1.5"/><rect x="176" y="100" width="90" height="5" rx="2" fill="var(--mut)"/>
+    <rect class="tw" x="194" y="78" width="30" height="3" rx="1.5" fill="var(--acc)"/><rect x="194" y="86" width="44" height="3" rx="1.5" fill="var(--line)"/>
+    <text x="300" y="100" text-anchor="end">03:00</text></svg>`,
+   t:"Women in SRE: Notes from the Night Shift",d:"A three-part series, drawn from my MBA research and my own nights on call, about what shift-based reliability work is really like for women and what companies can do about it.",a:[
+    ["Being a woman in a 24/7 SRE role: what no one tells you","Nov 2026","being-a-woman-in-a-24-7-sre-role-what-no-one-tells-you-2b3fd65a67b0"],
+    ["Why women leave shift-based tech roles, and what makes them stay","Nov 2026","why-women-leave-shift-based-tech-roles-and-what-makes-them-stay-45d2dbef89ff"],
+    ["Night shifts, safety and wellbeing: what companies can do better","Nov 2026","night-shifts-safety-and-wellbeing-what-companies-can-do-better-172dd0c587ef"]]},
+  {art:(()=>{const L=[[60,[30,55,80]],[160,[20,45,70,95]],[260,[40,70]]];let e='',n='';
+     for(let a=0;a<2;a++)L[a][1].forEach(y1=>L[a+1][1].forEach(y2=>e+=`<line x1="${L[a][0]}" y1="${y1}" x2="${L[a+1][0]}" y2="${y2}" stroke="var(--mut)" stroke-width="1" opacity=".35"/>`));
+     L.forEach((l,a)=>l[1].forEach((y,j)=>n+=`<circle class="neu" cx="${l[0]}" cy="${y}" r="7" style="animation-delay:${a*.45+j*.12}s"/>`));
+     return `<svg class="art" viewBox="0 0 320 110" role="img" aria-label="A small neural network lighting up layer by layer">${e}${n}</svg>`})(),
+   t:"AI for Everyone",d:"A beginner-friendly series that explains AI step by step, without the jargon.",a:[
+    ["What is AI, really? A beginner's guide","May 2025","what-is-ai-really-a-beginners-guide-fddbb5e127d5"],
+    ["How machines learn: a beginner's guide to machine learning","May 2025","how-machines-learn-a-beginners-guide-to-machine-learning-575b45a65bfe"],
+    ["What is deep learning? Neural networks explained simply","May 2025","what-is-deep-learning-neural-networks-explained-simply-c411d45d9a01"],
+    ["Popular AI models explained: CNNs, RNNs, Transformers and more","May 2025","popular-ai-models-explained-cnns-rnns-transformers-more-66a74b5bea6e"],
+    ["When fluent AI answers need a second look","Jan 2026","when-fluent-ai-answers-need-a-second-look-05bc69ca86d6"]]},
+  {art:`<svg class="art" viewBox="0 0 320 110" role="img" aria-label="A rising career line">
+    ${[0,1,2,3].map(i=>`<line x1="30" x2="300" y1="${20+i*24}" y2="${20+i*24}" stroke="var(--line)"/>`).join('')}
+    <path class="climb" d="M30 92L90 80L130 84L180 58L220 62L262 34L296 22"/>
+    ${[[90,80,'Associate'],[180,58,'SRE'],[262,34,'Senior']].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="var(--bg)" stroke="currentColor" stroke-width="2"/><text x="${p[0]}" y="${p[1]+18}" text-anchor="middle">${p[2]}</text>`).join('')}</svg>`,
+   t:"SRE and career growth",d:"Lessons from my path into reliability engineering and through an MBA.",a:[
+    ["A comprehensive guide to becoming a proficient Site Reliability Engineer","Jun 2024","a-comprehensive-guide-to-becoming-a-proficient-site-reliability-engineer-sre-55fa4105511a"],
+    ["Navigating the challenges of a 24/7 shift schedule: my journey as an SRE","Jun 2024","navigating-the-challenges-of-a-24-7-shift-schedule-my-journey-as-a-female-site-reliability-86a0db6db016"],
+    ["Achieving confidence and professional growth: tips from my MBA","Jun 2024","achieving-confidence-and-professional-growth-tips-from-my-mba-experience-649c69258f29"]]},
+  {art:`<svg class="art" viewBox="0 0 320 110" role="img" aria-label="Three hand-held photo prints with a small heart">
+    <g class="sway" style="--r:-9deg"><rect x="82" y="22" width="62" height="72" rx="3" fill="var(--bg)" stroke="var(--line)"/><rect x="88" y="28" width="50" height="44" rx="2" fill="var(--water)" opacity=".45"/><circle cx="125" cy="40" r="6" fill="#f5b942"/></g>
+    <g class="sway" style="--r:7deg;animation-delay:.8s"><rect x="176" y="20" width="62" height="72" rx="3" fill="var(--bg)" stroke="var(--line)"/><rect x="182" y="26" width="50" height="44" rx="2" fill="var(--acc)" opacity=".35"/><path d="M182 70l16-18 12 12 8-7 14 13z" fill="var(--acc)" opacity=".6"/></g>
+    <g class="sway" style="--r:-2deg;animation-delay:1.6s"><rect x="129" y="14" width="62" height="74" rx="3" fill="var(--bg)" stroke="var(--mut)" stroke-opacity=".5"/><rect x="135" y="20" width="50" height="46" rx="2" fill="#f5b942" opacity=".35"/><path d="M135 66c10-14 22-18 50-8v8z" fill="var(--alert)" opacity=".35"/></g>
+    <path class="heart" d="M160 96c-7-5-11-8-11-12a4.5 4.5 0 0 1 11-2 4.5 4.5 0 0 1 11 2c0 4-4 7-11 12z" fill="var(--alert)"/></svg>`,
+   t:"Little pieces of my life",d:"Personal reflections on work, people, letting go and the small moments that shape us.",a:[
+    ["A little space for my thoughts","Nov 2026","a-little-space-for-my-thoughts-5b3b784794cd"],
+    ["Sometimes talking is the best therapy, rather than stalking","Nov 2026","sometimes-talking-is-the-best-therapy-rather-than-stalking-41fd2f404a30"],
+    ["Accept it and move on","Nov 2026","accept-it-and-move-on-fdf7d747b2b8"],
+    ["A moment can change an entire lifetime","Nov 2026","a-moment-can-change-an-entire-lifetime-87b8a0c41020"],
+    ["The people we want and the people who want us","Nov 2026","the-people-we-want-and-the-people-who-want-us-2a272dcd94a1"],
+    ["Just because it's hard doesn't mean we don't need it","Nov 2026","just-because-its-hard-doesn-t-mean-we-don-t-need-it-4891f2bcede9"]]}
+];
+document.getElementById('series').innerHTML=series.map(s=>`
+  <div class="ser">${s.art}<h3>${s.t}</h3><p>${s.d}</p><ol>${s.a.map(a=>`<li><a href="${M}${a[2]}"><span>${a[0]}</span><span>${a[1]}</span></a></li>`).join('')}</ol></div>`).join('');
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* scroll reveal */
+const groups=['section:not(:first-child) h2','.facts .fact','#about .two>div:last-child p','.job','.pj','.sk','.ed','.certs li','.ser','.post','.contact p','.contact .cta'];
+const rvEls=[];
+groups.forEach(sel=>document.querySelectorAll(sel).forEach((el,i)=>{el.classList.add('rv','d'+(i%4));rvEls.push(el)}));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if('IntersectionObserver' in window&&!reduce){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in');io.unobserve(t);setTimeout(()=>t.classList.remove('rv','in','d0','d1','d2','d3'),1100)}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  rvEls.forEach(el=>io.observe(el));
+}else rvEls.forEach(el=>el.classList.add('in'));
+
+/* copy email */
+const cpy=document.getElementById('cpy');
+cpy.addEventListener('click',async()=>{const t=document.getElementById('em').textContent;
+  try{await navigator.clipboard.writeText(t);cpy.textContent='Copied ✓'}
+  catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('em'));const s=getSelection();s.removeAllRanges();s.addRange(r);cpy.textContent='Selected, press Ctrl+C'}
+  setTimeout(()=>cpy.textContent='Copy address',2200)});
+
+/* SMIL packets follow reduced-motion too */
+if(reduce)document.querySelectorAll('svg').forEach(s=>s.pauseAnimations&&s.pauseAnimations());
+
+/* count-up numbers in About */
+const countUp=el=>{const to=+el.dataset.to,dec=+(el.dataset.dec||0),suf=el.dataset.suf||'',t0=performance.now(),D=1400;
+  const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=(to*e).toFixed(dec)+suf;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)};
+const nums=document.querySelectorAll('[data-to]');
+if('IntersectionObserver' in window&&!reduce){const nio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){countUp(e.target);nio.unobserve(e.target)}}),{threshold:.6});nums.forEach(n=>nio.observe(n))}
+
+/* live status board: a new day's bar arrives every few seconds */
+if(!reduce){let tick=0;setInterval(()=>{if(document.hidden)return;tick++;
+  document.querySelectorAll('#comps .bars').forEach((b,k)=>{const f=b.firstElementChild;if(f)f.remove();
+    const n=document.createElement('i');n.className='new'+(((tick*5+k*11)%31===0)?' s':'');b.appendChild(n)})},2600)}
+
+/* experience rail fills as you scroll */
+const tl=document.getElementById('jobs');const prog=document.createElement('span');prog.className='prog';tl.prepend(prog);
+const jobsEls=[...tl.querySelectorAll('.job')];
+const rail=()=>{const r=tl.getBoundingClientRect(),mid=innerHeight*.6;const p=Math.max(0,Math.min(1,(mid-r.top)/r.height));
+  tl.style.setProperty('--p',p.toFixed(3));jobsEls.forEach(j=>j.classList.toggle('lit',j.getBoundingClientRect().top+36<mid))};
+addEventListener('scroll',()=>requestAnimationFrame(rail),{passive:true});rail();
+
+/* header shadow + active section in menu */
+const hdr=document.querySelector('header');
+const navLinks=[...document.querySelectorAll('nav .links a')];
+const secs=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+let ticking=false,last=null;
+const onScroll=()=>{ticking=false;
+  hdr.classList.toggle('scrolled',scrollY>8);
+  const y=scrollY+innerHeight*.35;let cur=null;
+  secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});
+  if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=secs[secs.length-1].id;
+  if(cur===last)return;last=cur;
+  navLinks.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;a.classList.toggle('on',on);
+    if(on&&a.parentElement.scrollWidth>a.parentElement.clientWidth){const p=a.parentElement;p.scrollTo({left:a.offsetLeft-p.clientWidth/2+a.offsetWidth/2,behavior:reduce?'auto':'smooth'})}})};
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+
+const root=document.documentElement,tgl=document.getElementById('tgl');
+const sysDark=()=>matchMedia('(prefers-color-scheme: dark)').matches;
+let saved=null;try{saved=localStorage.getItem('sw-theme')}catch(e){}
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':sysDark();
+const sync=()=>{const d=isDark();root.classList.toggle('is-dark',d);tgl.setAttribute('aria-label',d?'Switch to light mode':'Switch to dark mode');tgl.title=d?'Light mode':'Dark mode'};
+if(saved==='dark'||saved==='light')root.dataset.theme=saved;
+sync();
+tgl.addEventListener('click',()=>{const next=isDark()?'light':'dark';root.dataset.theme=next;try{localStorage.setItem('sw-theme',next)}catch(e){}sync()});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',sync);
+new MutationObserver(sync).observe(root,{attributes:true,attributeFilter:['data-theme']});
+}
+</script>
+</body>
+</html>
